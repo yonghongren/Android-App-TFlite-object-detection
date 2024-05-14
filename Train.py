@@ -1,6 +1,14 @@
 import numpy as np
 import os
 
+# Error: AttributeError: module 'numpy' has no attribute 'object'.
+# numpy > 1.23.4 defines np.object as object, etc.
+# module 'numpy' has no attribute 'object'
+np.object = object
+np.bool = bool
+
+# ImportError: dlopen(/Users/ren/anaconda3/envs/tensorflow/lib/python3.9/site-packages/array_record/python/array_record_module.so, 2): no suitable image found.  Did find:
+#   /Users/ren/anaconda3/envs/tensorflow/lib/python3.9/site-packages/array_record/python/array_record_module.so: unknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x03
 from tflite_model_maker.config import ExportFormat
 from tflite_model_maker import model_spec
 from tflite_model_maker import object_detector
